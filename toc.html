@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Obsessões e compulsões · Dr. Luis Felipe Jardim</title>
+<meta name="theme-color" content="#656635">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 110 155'%3E%3Cpath fill='%23E89925' d='M0 0H108V42L97 62 75 77 103 93 110 112V155H3V113L13 93 35 77 8 62 0 42Z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
+<style>
+/* Acompanhamento do TOC: Y-BOCS autoaplicável (Y-BOCS-SR) a cada 2 semanas, com a lista de sintomas na
+   primeira avaliação (e quando o paciente quiser atualizar). Identificação só no primeiro uso (fica no aparelho)
+   ou pelo link pessoal (?c=CÓDIGO&n=Nome). Envia texto organizado ao formulário "Pré-consulta por voz · recebimento";
+   o integrador localiza o paciente no V Saúde e anexa um PDF com a evolução a cada avaliação. */
+:root{
+  --cafe:#83462D; --terracota:#C3622D; --ambar:#E89925; --oliva-dourado:#88764F; --oliva:#656635;
+  --verde-floresta:#38584B; --branco:#FFFFFF;
+  --paper:#F7F6F3; --paper-2:#EDEBE6; --ink:#2B2A22; --soft:#5E5A4C; --line:#D9D6CC;
+  --on-dark:#F2F1F0; --on-dark-soft:#DAD7CB; --alert-bg:#F7E6DA; --alert-line:#E9C9B4;
+  --f-display:"Optima LT Pro",Optima,"Optima nova","Marcellus",Candara,serif;
+  --f-body:Garet,"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.55 var(--f-body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:var(--oliva)}
+h1,h2,h3{font-family:var(--f-display);font-weight:500;margin:0;text-wrap:balance}
+p{margin:0}
+.in{max-width:620px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--oliva);color:var(--on-dark)}
+header.top .in{display:flex;align-items:center;gap:12px;min-height:58px}
+header.top svg.logo{width:13px;height:18px;fill:var(--ambar);flex:none}
+header.top b{font:500 17px var(--f-display);margin-right:auto}
+header.top .tag{font:600 10.5px var(--f-body);letter-spacing:.18em;text-transform:uppercase;color:var(--on-dark-soft)}
+.dita{background:#56572D;color:var(--on-dark)}
+header.top .dita .in{display:flex;align-items:center;gap:10px;min-height:40px;padding-block:6px}
+header.top .dita span{font:400 13.5px/1.35 var(--f-body);color:var(--on-dark)}
+header.top .dita b{font:700 13.5px/1.35 var(--f-body);margin:0;color:#fff}
+header.top svg.tecla{width:26px;height:26px;flex:none}
+svg.tecla rect{fill:#F2F1F0} svg.tecla path{fill:#2B2A22} svg.tecla path.t{fill:none;stroke:#2B2A22;stroke-width:1.8;stroke-linecap:round}
+main{padding-block:24px 120px}
+.rot{font:600 11px/1.4 var(--f-body);letter-spacing:.22em;text-transform:uppercase;color:var(--cafe)}
+.tit{font-size:clamp(28px,7vw,36px);line-height:1.12;margin:8px 0 6px}
+.sub{color:var(--soft);font-size:15px}
+.cartao{background:var(--branco);border:1px solid var(--line);border-radius:14px;padding:16px 14px;margin-top:14px}
+.cartao.erro{border-color:var(--cafe)}
+.q-tit{font-weight:600;font-size:16px;line-height:1.4}
+.q-desc{font-size:14px;color:var(--soft);margin-top:4px}
+.q-erro{display:none;font-size:13.5px;color:var(--cafe);font-weight:600;margin-top:8px}
+.erro .q-erro{display:block}
+input[type=text],input[type=tel],input[type=date],textarea{width:100%;font:16px var(--f-body);color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:11px 12px;margin-top:8px}
+textarea{min-height:80px;resize:vertical}
+textarea:focus,input:focus{outline:2px solid var(--ambar);outline-offset:1px;background:#fff}
+.n{display:inline-block;min-width:24px;font:700 14px var(--f-body);color:var(--cafe)}
+.freq{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;margin-top:10px}
+.op{border:1.5px solid var(--line);background:#fff;color:var(--ink);border-radius:10px;padding:9px 4px;font:600 13px/1.2 var(--f-body);cursor:pointer;min-height:48px;text-align:center}
+.op[aria-pressed="true"]{background:var(--verde-floresta);border-color:var(--verde-floresta);color:#fff}
+.ops{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.ops .op{padding:10px 14px;font-size:14.5px;text-align:left;min-height:44px}
+.escala{display:grid;grid-template-columns:repeat(11,minmax(0,1fr));gap:3px;margin-top:10px}
+.escala .op{padding:10px 0;min-height:44px}
+.escala-leg{display:flex;justify-content:space-between;font-size:12.5px;color:var(--soft);margin-top:6px}
+.alerta{background:var(--alert-bg);border:1px solid var(--alert-line);color:var(--cafe);border-radius:10px;padding:12px 14px;margin-top:12px;font-size:14.5px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 24px;border-radius:999px;font:600 13px/1 var(--f-body);letter-spacing:.12em;text-transform:uppercase;border:1px solid transparent;cursor:pointer;text-decoration:none}
+.btn.pri{background:var(--ambar);color:var(--ink)}
+.btn.sec{background:transparent;border-color:var(--line);color:var(--ink)}
+.btn.larga{width:100%}
+.btn:disabled{opacity:.5}
+.lnk{background:none;border:0;color:var(--cafe);text-decoration:underline;font:500 14px var(--f-body);cursor:pointer;padding:8px 0}
+.proximo{background:var(--verde-floresta);color:#fff;border-radius:16px;padding:18px 16px;margin-top:16px}
+.proximo h2{font-size:24px;color:#fff}
+.proximo p{color:#E6EDE8;font-size:15px;margin:6px 0 14px}
+.grafico{margin-top:10px}
+.grafico svg{width:100%;height:auto;display:block}
+.grafico .vazio{font-size:14px;color:var(--soft);padding:12px 0}
+.hist{margin:8px 0 0;padding:0;list-style:none}
+.hist li{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.hist li span:last-child{color:var(--soft);text-align:right}
+.res{display:flex;align-items:baseline;gap:12px;margin-top:8px}
+.res b{font:500 52px/1 var(--f-display);color:var(--oliva)}
+.nota{font-size:13.5px;color:var(--soft)}
+.crise{font-size:14px;color:var(--soft);margin-top:16px}
+.fim{text-align:center;display:grid;gap:14px;justify-items:center;padding-top:24px}
+.fim h1{font-size:32px}
+[hidden]{display:none!important}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.ops.col{flex-direction:column;gap:6px}
+.ops.col .op{width:100%;text-align:left;padding:11px 14px;font-weight:500;line-height:1.35}
+.ops.col .op b{font-weight:700;margin-right:6px}
+.grupo{font:600 11px/1.4 var(--f-body);letter-spacing:.16em;text-transform:uppercase;color:var(--verde-floresta);margin:18px 0 0}
+.lista .op{font-weight:500;font-size:14px}
+.passo{font-size:13px;color:var(--soft);margin-top:4px}
+.sec-int{background:var(--paper-2);border-radius:12px;padding:12px 14px;margin-top:14px;font-size:14.5px}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="in"><svg class="logo" viewBox="0 0 110 155" aria-hidden="true"><path d="M0 0H108V42L97 62 75 77 103 93 110 112V155H3V113L13 93 35 77 8 62 0 42Z"/></svg><b>Dr. Luis Felipe Jardim</b><span class="tag">Obsessões e compulsões</span></div>
+</header>
+<main class="in" id="tela" aria-live="polite"></main>
+<script>
+// ====== CONFIGURAÇÃO ======
+// Mesmo formulário de recebimento do "Meu humor" e do DIVA-5: o cabeçalho [Y-BOCS] identifica o questionário.
+const FORM_EXTRA = "https://docs.google.com/forms/d/e/1FAIpQLSdEgVRqms8zbmovVuGCF6k2milxv4Tac83b0YddnNUcPLOgqg/formResponse";
+const CAMPO_PACIENTE = "entry.2057517674", CAMPO_RESPOSTAS = "entry.929291522";
+const CHAVE = "ybocs.v1";
+const DIAS_AVAL = 14;              // intervalo entre avaliações (a escala pergunta pela última semana)
+const MOSTRAR_PONTUACAO = true;    // o paciente vê a própria nota e o gráfico
+
+/* Y-BOCS, versão autoaplicável (Goodman et al., 1989; Baer, 1991; Steketee et al., 1996).
+   Tradução de trabalho para o português (revisar com a versão brasileira validada antes de uso em pesquisa).
+   Itens 1–5: obsessões; 6–10: compulsões. Cada item de 0 a 4; total de 0 a 40. */
+const ITENS = [
+  { t: "Tempo ocupado pelos pensamentos obsessivos", q: "Quanto do seu tempo é ocupado por pensamentos obsessivos?", o: [
+    "Nenhum", "Menos de 1 hora por dia, ou pensamentos de vez em quando", "De 1 a 3 horas por dia, ou pensamentos frequentes",
+    "Mais de 3 e até 8 horas por dia, ou pensamentos muito frequentes", "Mais de 8 horas por dia, ou pensamentos quase constantes"] },
+  { t: "Interferência dos pensamentos obsessivos", q: "Quanto os pensamentos obsessivos atrapalham o seu trabalho, os estudos, a vida social ou as tarefas do dia a dia?", o: [
+    "Nada", "Pouco: atrapalham um pouco, mas consigo fazer tudo", "Moderadamente: atrapalham com clareza, mas ainda consigo dar conta",
+    "Muito: causam prejuízo importante no que preciso fazer", "Extremamente: me impedem de fazer as coisas"] },
+  { t: "Aflição causada pelos pensamentos obsessivos", q: "Quanta aflição ou angústia os pensamentos obsessivos causam?", o: [
+    "Nenhuma", "Pouca: não incomodam muito", "Moderada: incomodam, mas consigo lidar",
+    "Muita: incomodam muito", "Extrema: aflição quase constante, que me paralisa"] },
+  { t: "Resistência aos pensamentos obsessivos", q: "Quanto esforço você faz para resistir aos pensamentos obsessivos, tentando afastá-los ou desviar a atenção?", o: [
+    "Sempre tento resistir, ou quase não tenho esses pensamentos", "Tento resistir na maior parte das vezes", "Faço algum esforço para resistir",
+    "Deixo os pensamentos virem sem tentar controlar, mas a contragosto", "Me entrego totalmente aos pensamentos, sem resistir"] },
+  { t: "Controle sobre os pensamentos obsessivos", q: "Quanto controle você tem sobre os pensamentos obsessivos? Consegue interrompê-los ou desviar a atenção?", o: [
+    "Controle total", "Muito controle: quase sempre consigo interromper ou desviar", "Controle moderado: às vezes consigo",
+    "Pouco controle: raramente consigo, e com muita dificuldade", "Nenhum controle: não consigo desviar nem por um instante"] },
+  { t: "Tempo gasto com compulsões", q: "Quanto do seu tempo é gasto com compulsões (rituais, verificações, lavagens, contagens, rituais mentais)?", o: [
+    "Nenhum", "Menos de 1 hora por dia, ou de vez em quando", "De 1 a 3 horas por dia, ou com frequência",
+    "Mais de 3 e até 8 horas por dia, ou com muita frequência", "Mais de 8 horas por dia, ou quase o tempo todo"] },
+  { t: "Interferência das compulsões", q: "Quanto as compulsões atrapalham o seu trabalho, os estudos, a vida social ou as tarefas do dia a dia?", o: [
+    "Nada", "Pouco: atrapalham um pouco, mas consigo fazer tudo", "Moderadamente: atrapalham com clareza, mas ainda consigo dar conta",
+    "Muito: causam prejuízo importante no que preciso fazer", "Extremamente: me impedem de fazer as coisas"] },
+  { t: "Aflição se impedido(a) de fazer as compulsões", q: "Como você se sentiria se fosse impedido(a) de fazer as compulsões? Quanta ansiedade sentiria?", o: [
+    "Nenhuma ansiedade", "Um pouco de ansiedade", "A ansiedade aumentaria, mas eu conseguiria lidar",
+    "A ansiedade aumentaria muito e me incomodaria bastante", "Ansiedade extrema, que me paralisaria"] },
+  { t: "Resistência às compulsões", q: "Quanto esforço você faz para resistir às compulsões?", o: [
+    "Sempre tento resistir, ou quase não tenho compulsões", "Tento resistir na maior parte das vezes", "Faço algum esforço para resistir",
+    "Faço as compulsões sem tentar controlar, mas a contragosto", "Me entrego totalmente às compulsões, sem resistir"] },
+  { t: "Controle sobre as compulsões", q: "Quanto controle você tem sobre as compulsões? Quando sente a vontade forte de fazê-las, consegue segurar?", o: [
+    "Controle total", "Muito controle: sinto a pressão, mas quase sempre consigo segurar", "Controle moderado: a pressão é forte e só seguro com dificuldade",
+    "Pouco controle: a vontade é muito forte e, no máximo, consigo adiar", "Nenhum controle: a vontade é avassaladora e não consigo segurar"] }];
+const FAIXAS = [[0, 7, "subclínicos"], [8, 15, "leves"], [16, 23, "moderados"], [24, 31, "graves"], [32, 40, "extremos"]];
+const faixa = (t) => FAIXAS.find(([a, b]) => t >= a && t <= b)[2];
+
+/* Lista de sintomas (baseada na lista de sintomas da Y-BOCS), em linguagem simples. Marca só o que acontece atualmente. */
+const LISTA = [
+  ["O", "Medo de machucar alguém ou a si mesmo(a) sem querer, ou de perder o controle", [
+    "Medo de machucar outras pessoas", "Medo de machucar a mim mesmo(a)", "Imagens violentas ou horríveis que invadem a mente",
+    "Medo de dizer palavrões, ofensas ou algo inapropriado", "Medo de fazer algo constrangedor", "Medo de agir por um impulso indesejado",
+    "Medo de ser responsável por algo terrível (incêndio, assalto, acidente)"]],
+  ["O", "Contaminação", ["Nojo ou preocupação com urina, fezes, saliva, suor ou outras secreções", "Preocupação com sujeira ou germes",
+    "Medo de produtos químicos, venenos ou radiação", "Medo de pegar uma doença por contaminação", "Medo de contaminar outras pessoas",
+    "Incômodo forte com coisas grudentas ou resíduos"]],
+  ["O", "Pensamentos sexuais ou religiosos", ["Pensamentos ou imagens sexuais que considero proibidos ou inaceitáveis", "Pensamentos sexuais envolvendo crianças ou familiares",
+    "Dúvidas angustiantes sobre a minha orientação sexual", "Medo de ofender a Deus, de blasfemar ou de cometer pecado", "Preocupação excessiva com certo e errado, moral"]],
+  ["O", "Ordem, exatidão e outros", ["Necessidade de que as coisas fiquem simétricas, alinhadas ou \"perfeitas\"", "Necessidade de saber ou de lembrar de coisas",
+    "Medo de perder coisas ou de jogar fora algo importante", "Palavras, músicas, sons ou imagens que grudam na mente", "Números ou cores de sorte e de azar; medos supersticiosos",
+    "Preocupação com doenças ou com alguma parte do corpo ou da aparência"]],
+  ["C", "Limpeza e lavagem", ["Lavar as mãos demais ou de um jeito ritualizado", "Banho, escovação ou higiene demorados ou ritualizados",
+    "Limpar objetos ou a casa em excesso", "Evitar tocar em coisas ou lugares por medo de contaminação"]],
+  ["C", "Verificação", ["Verificar portas, fechaduras, fogão, gás, tomadas ou aparelhos", "Verificar se não machucou ninguém (ou se não vai machucar)",
+    "Verificar se não aconteceu nada de terrível", "Verificar se não cometeu erros (rever, reler, conferir)", "Verificar o corpo ou pedir exames por medo de doença"]],
+  ["C", "Repetir, contar, ordenar e guardar", ["Reler ou reescrever as coisas", "Repetir ações (entrar e sair de um lugar, levantar e sentar) até \"ficar certo\"",
+    "Contar (passos, objetos, vezes)", "Arrumar e ordenar objetos até ficarem \"do jeito certo\"", "Guardar ou acumular coisas sem conseguir jogar fora"]],
+  ["C", "Outros rituais", ["Rituais mentais (rezar, repetir frases ou números na mente, \"anular\" um pensamento ruim)", "Perguntar muitas vezes ou pedir que me tranquilizem",
+    "Necessidade de confessar ou de contar as coisas", "Tocar, bater de leve ou esfregar objetos", "Fazer listas em excesso",
+    "Arrancar cabelos ou pelos", "Cutucar ou espremer a pele"]]];
+const CVV = "Se esses pensamentos estiverem fortes agora, não espere a consulta: ligue <b>188</b> (CVV, 24 h, gratuito), <b>192</b> (SAMU) ou procure o pronto-atendimento mais próximo, e avise a clínica.";
+
+// ====== ESTADO ======
+let D = { id: null, hist: [] }, R = null;
+try { const s = JSON.parse(localStorage.getItem(CHAVE) || "null"); if (s && Array.isArray(s.hist)) D = s; } catch (e) {}
+const salvar = () => { try { localStorage.setItem(CHAVE, JSON.stringify(D)); } catch (e) {} };
+// Link pessoal enviado pelo consultório (?c=CÓDIGO&n=Nome): o paciente já chega identificado.
+const PARAM = new URLSearchParams(location.search), COD = (PARAM.get("c") || "").toUpperCase().replace(/[^A-Z0-9]/g, "");
+if (COD.length >= 6 && (!D.id || D.id.codigo !== COD)) { D = { id: { codigo: COD, nome: (PARAM.get("n") || "").trim(), cpf: "", nasc: "", tel: "" }, hist: [] }; salvar(); }
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const dataBR = (iso) => new Date(iso).toLocaleDateString("pt-BR");
+const dias = (iso) => Math.floor((Date.now() - new Date(iso).getTime()) / 86400000);
+const ultima = () => D.hist.slice(-1)[0];
+const devido = () => { const u = ultima(); return !u || dias(u.d) >= DIAS_AVAL; };
+const temLista = () => D.hist.some((h) => h.lista);
+function cpfValido(c) {
+  c = String(c || "").replace(/\D/g, "");
+  if (c.length !== 11 || /^(\d)\1{10}$/.test(c)) return false;
+  for (const n of [9, 10]) { let s = 0; for (let i = 0; i < n; i++) s += +c[i] * (n + 1 - i); if ((s * 10 % 11) % 10 !== +c[n]) return false; }
+  return true;
+}
+const mascaraCpf = (v) => { const d = v.replace(/\D/g, "").slice(0, 11); return d.replace(/^(\d{3})(\d)/, "$1.$2").replace(/^(\d{3})\.(\d{3})(\d)/, "$1.$2.$3").replace(/\.(\d{3})(\d{1,2})$/, ".$1-$2"); };
+const soma = (a, i, j) => a.slice(i, j).reduce((x, y) => x + y, 0);
+
+// ====== TELAS ======
+function primeiroUso() {
+  $("tela").innerHTML = `<p class="rot">Obsessões e compulsões</p><h1 class="tit">Acompanhando a sua melhora</h1>
+    <p class="sub">Aqui você registra, de tempos em tempos, quanto os pensamentos obsessivos e as compulsões estão ocupando a sua vida. O Dr. Luis Felipe acompanha a evolução entre as consultas.</p>
+    <div class="cartao"><p class="q-tit">Como funciona</p>
+      <p class="q-desc">• A cada <b>2 semanas</b>: um questionário de 10 perguntas (Y-BOCS), uns 5 minutos.<br>• Na primeira vez, antes dele, uma lista de sintomas para marcar o que acontece com você (mais uns 5 minutos).<br>• Seus dados são pedidos só agora e ficam guardados neste celular.</p></div>
+    ${[["nome", "Nome completo", "text"], ["cpf", "CPF", "cpf"], ["nasc", "Data de nascimento", "date"], ["tel", "Celular com DDD", "tel"]].map(([k, t, tp]) =>
+      `<div class="cartao" id="c${k}"><p class="q-tit">${t}</p><input id="q${k}" type="${tp === "cpf" ? "text" : tp}" ${tp === "cpf" ? 'inputmode="numeric" maxlength="14" placeholder="000.000.000-00" data-cpf="1"' : tp === "tel" ? 'inputmode="tel" autocomplete="tel"' : tp === "text" ? 'autocomplete="name"' : ""}><p class="q-erro">${k === "cpf" ? "Confira o CPF." : "Preencha este campo."}</p></div>`).join("")}
+    <button class="btn pri larga" style="margin-top:18px" id="salvarId">Continuar</button>
+    <p class="nota" style="margin-top:12px">Suas respostas vão só para o Dr. Luis Felipe e ficam no seu prontuário, sob sigilo médico e conforme a LGPD.</p>`;
+  $("salvarId").onclick = () => {
+    const v = (k) => $("q" + k).value.trim(); let ok = true;
+    ["nome", "cpf", "nasc", "tel"].forEach((k) => { const ruim = !v(k) || (k === "cpf" && !cpfValido(v(k))); $("c" + k).classList.toggle("erro", ruim); if (ruim) ok = false; });
+    if (!ok) return;
+    D.id = { nome: v("nome"), cpf: v("cpf").replace(/\D/g, ""), nasc: v("nasc"), tel: v("tel") }; salvar(); inicio();
+  };
+}
+function graficoSvg() {
+  const ps = D.hist;
+  if (!ps.length) return `<p class="vazio">O gráfico aparece depois da primeira avaliação.</p>`;
+  const W = 340, H = 180, L = 30, Rr = 12, T = 10, B = 26, x = (i) => ps.length === 1 ? L + (W - L - Rr) / 2 : L + i * (W - L - Rr) / (ps.length - 1), y = (v) => T + (40 - v) * (H - T - B) / 40;
+  const tons = ["#F3F1EA", "#ECE7D8", "#E3D9BF", "#D8C7A0", "#CDB585"];
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Evolução da pontuação da Y-BOCS">`;
+  FAIXAS.forEach(([a, b], i) => { s += `<rect x="${L}" y="${y(i === 4 ? b : b + 1)}" width="${W - L - Rr}" height="${y(a) - y(i === 4 ? b : b + 1)}" fill="${tons[i]}"/>`; });
+  [0, 8, 16, 24, 32, 40].forEach((v) => { s += `<text x="${L - 6}" y="${y(v) + 4}" text-anchor="end" font-size="10" fill="#5E5A4C">${v}</text>`; });
+  s += `<polyline fill="none" stroke="#38584B" stroke-width="2" stroke-linejoin="round" points="${ps.map((p, i) => `${x(i)},${y(p.total)}`).join(" ")}"/>`;
+  ps.forEach((p, i) => { s += `<circle cx="${x(i)}" cy="${y(p.total)}" r="5" fill="#38584B" stroke="#fff" stroke-width="2"><title>${dataBR(p.d)}: ${p.total} (${faixa(p.total)})</title></circle>`; });
+  const u = ps.length - 1; s += `<text x="${Math.min(x(u), W - Rr - 4)}" y="${y(ps[u].total) - 10}" text-anchor="${ps.length === 1 ? "middle" : "end"}" font-size="12" font-weight="700" fill="#2B2A22">${ps[u].total}</text>`;
+  [0, u].filter((v, i, a) => a.indexOf(v) === i).forEach((i) => { s += `<text x="${x(i)}" y="${H - 8}" text-anchor="${ps.length === 1 ? "middle" : i === 0 ? "start" : "end"}" font-size="10" fill="#5E5A4C">${dataBR(ps[i].d).slice(0, 5)}</text>`; });
+  return s + `</svg><p class="nota">Pontuação de 0 a 40: quanto mais baixa, menos sintomas. As faixas mais escuras são sintomas mais intensos.</p>`;
+}
+function inicio() {
+  if (!D.id) return primeiroUso();
+  const u = ultima(), dev = devido(), falta = u ? Math.max(0, DIAS_AVAL - dias(u.d)) : 0;
+  $("tela").innerHTML = `<p class="rot">Olá${D.id.nome ? ", " + esc(D.id.nome.split(" ")[0]) : ""}</p><h1 class="tit">Obsessões e compulsões</h1>
+    <div class="proximo">${dev
+      ? `<h2>Hora da avaliação</h2><p>${u ? `Já se passaram ${dias(u.d)} dias desde a última.` : "É a primeira: ela serve de ponto de partida para medir a melhora."} ${temLista() ? "São 10 perguntas sobre a última semana, uns 5 minutos." : "Primeiro uma lista de sintomas para marcar, depois 10 perguntas sobre a última semana. Uns 10 minutos."}</p><button class="btn pri larga" id="ir">Responder agora</button>`
+      : `<h2>Próxima avaliação ${falta === 0 ? "hoje" : `daqui a ${falta} dia${falta > 1 ? "s" : ""}`}</h2><p>Avaliar a cada 2 semanas mostra a evolução com clareza. Se algo mudou muito, pode responder antes.</p><button class="btn sec larga" style="color:#fff;border-color:rgba(255,255,255,.5)" id="ir">Responder agora mesmo assim</button>`}</div>
+    ${MOSTRAR_PONTUACAO ? `<div class="cartao"><p class="q-tit">Sua evolução</p><div class="grafico">${graficoSvg()}</div></div>` : ""}
+    ${D.hist.length ? `<div class="cartao"><p class="q-tit">Avaliações</p><ul class="hist">${D.hist.slice(-8).reverse().map((h) => `<li><span>${dataBR(h.d)}</span><span>${MOSTRAR_PONTUACAO ? `${h.total} pontos · ${faixa(h.total)}` : "enviada"}</span></li>`).join("")}</ul></div>` : ""}
+    <p class="crise">Em crise, não espere a consulta: <b>188</b> (CVV, 24 h) ou <b>192</b> (SAMU).</p>
+    ${D.id.codigo ? "" : `<button class="lnk" id="trocar">Não é ${esc(D.id.nome.split(" ")[0])}? Trocar a pessoa neste celular</button>`}`;
+  $("ir").onclick = () => novo(!temLista());
+  if ($("trocar")) $("trocar").onclick = () => { if (confirm("Apagar os dados e o histórico deste celular? O que já foi enviado continua com o Dr. Luis Felipe.")) { D = { id: null, hist: [] }; salvar(); inicio(); } };
+  window.scrollTo(0, 0);
+}
+function novo(comLista) {
+  R = { inicio: Date.now(), itens: Array(10).fill(null), lista: comLista ? [] : null, alvo: "", morte: null, nota: "" };
+  comLista ? telaLista() : telaItens();
+}
+const chaveLista = (g, i) => g + "." + i;
+function telaLista() {
+  const grupo = (tipo) => LISTA.map((g, gi) => g[0] !== tipo ? "" : `<p class="grupo">${esc(g[1])}</p><div class="ops lista" role="group">${g[2].map((s, i) =>
+    `<button type="button" class="op" data-l="${chaveLista(gi, i)}" aria-pressed="${R.lista.includes(chaveLista(gi, i))}">${esc(s)}</button>`).join("")}</div>`).join("");
+  $("tela").innerHTML = `<p class="rot">Passo 1 de 2 · Lista de sintomas</p><h1 class="tit">O que acontece com você</h1>
+    <p class="sub">Toque em tudo o que acontece com você <b>atualmente</b>. Não precisa marcar o que já passou. Se nada de um grupo se aplica, siga em frente.</p>
+    <div class="sec-int"><b>Obsessões</b> são pensamentos, imagens ou impulsos que invadem a mente contra a sua vontade, parecem sem sentido ou exagerados e causam aflição. Não são simples preocupações com problemas reais.</div>
+    ${grupo("O")}
+    <div class="sec-int" style="margin-top:22px"><b>Compulsões</b> são comportamentos ou atos mentais que você se sente levado(a) a fazer para aliviar a aflição de uma obsessão ou para que as coisas fiquem "certas".</div>
+    ${grupo("C")}
+    <div class="cartao"><p class="q-tit">Quais são as obsessões ou compulsões que mais atrapalham hoje?</p><p class="q-desc">Opcional. Escreva com suas palavras, até três. Ex.: "verificar o fogão várias vezes antes de sair".</p><textarea id="qalvo">${esc(R.alvo)}</textarea></div>
+    <button class="btn pri larga" style="margin-top:18px" id="seguir">Continuar para as 10 perguntas</button>
+    <button class="lnk" id="cancelar">Voltar sem salvar</button>`;
+  $("qalvo").oninput = (e) => (R.alvo = e.target.value);
+  $("seguir").onclick = telaItens; $("cancelar").onclick = inicio; window.scrollTo(0, 0);
+}
+function telaItens() {
+  const item = (i) => `<div class="cartao" id="ci${i}"><p class="q-tit"><span class="n">${i + 1}.</span>${esc(ITENS[i].q)}</p>
+    <div class="ops col" role="group">${ITENS[i].o.map((o, v) => `<button type="button" class="op" data-k="i${i}" data-v="${v}" aria-pressed="${R.itens[i] === v}"><b>${v}</b>${esc(o)}</button>`).join("")}</div><p class="q-erro">Escolha uma opção.</p></div>`;
+  $("tela").innerHTML = `<p class="rot">${R.lista ? "Passo 2 de 2 · " : ""}Questionário · Y-BOCS</p><h1 class="tit">Na última semana</h1>
+    <p class="sub">Pense em todas as suas obsessões e compulsões juntas e responda como foi <b>nos últimos 7 dias</b>, incluindo hoje.</p>
+    ${R.lista ? "" : `<button class="lnk" id="atualizar">Meus sintomas mudaram: atualizar a lista de sintomas antes</button>`}
+    <div class="sec-int"><b>Obsessões:</b> pensamentos, imagens ou impulsos que invadem a mente contra a sua vontade e causam aflição.</div>
+    ${[0, 1, 2, 3, 4].map(item).join("")}
+    <div class="sec-int" style="margin-top:22px"><b>Compulsões:</b> comportamentos ou atos mentais que você se sente levado(a) a fazer para aliviar a aflição (lavar, verificar, repetir, contar, ordenar, rezar ou repetir frases na mente…).</div>
+    ${[5, 6, 7, 8, 9].map(item).join("")}
+    <button class="btn pri larga" style="margin-top:18px" id="seguir">Continuar</button>
+    <button class="lnk" id="cancelar">${R.lista ? "Voltar para a lista de sintomas" : "Voltar sem salvar"}</button>`;
+  if ($("atualizar")) $("atualizar").onclick = () => { R.lista = []; telaLista(); };
+  $("seguir").onclick = () => { const f = R.itens.findIndex((v) => v == null); R.itens.forEach((v, i) => $("ci" + i).classList.toggle("erro", v == null));
+    if (f >= 0) return $("ci" + f).scrollIntoView({ behavior: "smooth", block: "center" }); telaFinal(); };
+  $("cancelar").onclick = R.lista ? telaLista : inicio; window.scrollTo(0, 0);
+}
+function telaFinal() {
+  $("tela").innerHTML = `<p class="rot">Para terminar</p><h1 class="tit">Mais duas perguntas</h1>
+    <div class="cartao" id="cmorte"><p class="q-tit">Nos últimos dias, você teve vontade de morrer ou pensou em tirar a própria vida?</p>
+      <p class="q-desc">Não conte aqui os pensamentos intrusivos de fazer mal a alguém ou a si mesmo que você não quer ter e que causam medo: esses já entraram nas perguntas anteriores. Esta pergunta é sobre <b>desejo</b> de morrer.</p>
+      ${`<div class="ops" role="group">${["Não", "Sim"].map((o, i) => `<button type="button" class="op" data-k="morte" data-v="${i}" aria-pressed="${R.morte === i}">${o}</button>`).join("")}</div>`}<p class="q-erro">Responda, por favor.</p>
+      <div class="alerta" id="almorte" ${R.morte === 1 ? "" : "hidden"}><b>Obrigado por contar.</b> O Dr. Luis Felipe vai ver isso com atenção. ${CVV}</div></div>
+    <div class="cartao"><p class="q-tit">Quer contar algo ao Dr. Luis Felipe?</p><p class="q-desc">Opcional. O que melhorou, o que piorou, como estão os exercícios da terapia, remédios, efeitos colaterais.</p><textarea id="qnota">${esc(R.nota)}</textarea></div>
+    <button class="btn pri larga" style="margin-top:18px" id="enviar">Enviar</button>
+    <button class="lnk" id="cancelar">Voltar às perguntas</button>`;
+  $("qnota").oninput = (e) => (R.nota = e.target.value);
+  $("enviar").onclick = enviar; $("cancelar").onclick = telaItens; window.scrollTo(0, 0);
+}
+function relatorio(reg) {
+  const id = D.id, nascBR = (id.nasc || "").split("-").reverse().join("/"), cpfF = (id.cpf || "").replace(/^(\d{3})(\d{3})(\d{3})(\d{2})$/, "$1.$2.$3-$4");
+  const cab = `[Y-BOCS] ${id.nome}` + (id.cpf ? ` · CPF ${id.cpf}` : "") + (nascBR ? ` · nasc. ${nascBR}` : "") + (id.tel ? ` · ${id.tel}` : "") + (id.codigo ? ` · código ${id.codigo}` : "");
+  const b = [["Identificação", [`Nome completo: ${id.nome}`, cpfF && `CPF: ${cpfF}`, nascBR && `Data de nascimento: ${nascBR}`, id.tel && `Celular com DDD: ${id.tel}`, id.codigo && `Link pessoal: ${id.codigo}`, `Tempo de preenchimento: ${reg.tempo}`].filter(Boolean).join("\n")]];
+  b.push(["Y-BOCS · última semana", ITENS.map((it, i) => `${i + 1}. ${it.t}: ${reg.itens[i]} (${it.o[reg.itens[i]]})`).join("\n") +
+    `\nObsessões (itens 1–5): ${reg.obs}/20\nCompulsões (itens 6–10): ${reg.comp}/20\nTotal: ${reg.total}/40 · sintomas ${faixa(reg.total)}`]);
+  if (reg.lista) {
+    const marc = (tipo) => LISTA.map((g, gi) => g[0] !== tipo ? null : [g[1], g[2].filter((_, i) => reg.lista.includes(chaveLista(gi, i)))]).filter((x) => x && x[1].length);
+    const txt = (tipo) => marc(tipo).map(([g, xs]) => `${g}: ${xs.join("; ")}`).join("\n") || "nenhuma marcada";
+    b.push(["Lista de sintomas (atuais)", `OBSESSÕES\n${txt("O")}\nCOMPULSÕES\n${txt("C")}`]);
+    b.push(["Sintomas que mais atrapalham", reg.alvo.trim()]);
+  }
+  b.push(["Pensamentos de morte", `Vontade de morrer ou de tirar a própria vida: ${reg.morte === 1 ? "SIM" : "Não"}`]);
+  b.push(["Observações do paciente", reg.nota.trim()]);
+  const corpo = (reg.morte === 1 ? "⚠ ATENÇÃO: sinal de risco (vontade de morrer ou de tirar a própria vida) nas respostas.\n\n" : "") +
+    `ACOMPANHAMENTO DO TOC · Y-BOCS (respondido pelo paciente)\n${new Date(reg.d).toLocaleString("pt-BR")}\n\n` + b.map(([t, x]) => `## ${t}\n${x || "—"}`).join("\n\n");
+  return { cab, corpo };
+}
+async function enviar() {
+  if (R.morte == null) { $("cmorte").classList.add("erro"); return $("cmorte").scrollIntoView({ behavior: "smooth", block: "center" }); }
+  const min = Math.max(1, Math.round((Date.now() - R.inicio) / 60000));
+  const reg = { d: new Date().toISOString(), itens: R.itens.slice(), obs: soma(R.itens, 0, 5), comp: soma(R.itens, 5, 10), total: soma(R.itens, 0, 10),
+    lista: R.lista ? R.lista.slice() : null, alvo: R.alvo || "", morte: R.morte, nota: R.nota, tempo: `${min} minuto${min > 1 ? "s" : ""}` };
+  const b = $("enviar"); b.disabled = true; b.textContent = "Enviando…";
+  const { cab, corpo } = relatorio(reg), fd = new URLSearchParams();
+  fd.append(CAMPO_PACIENTE, cab); fd.append(CAMPO_RESPOSTAS, corpo);
+  try {
+    await fetch(FORM_EXTRA, { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: fd.toString() });
+  } catch (err) {
+    b.disabled = false; b.textContent = "Tentar enviar de novo";
+    return alert("Não foi possível enviar. Confira a internet e tente de novo.");
+  }
+  D.hist.push({ d: reg.d, total: reg.total, obs: reg.obs, comp: reg.comp, lista: !!reg.lista }); salvar();
+  concluido(reg);
+}
+function concluido(reg) {
+  const ps = D.hist, base = ps[0];
+  let msg = "";
+  if (MOSTRAR_PONTUACAO) {
+    msg = `<div class="cartao"><p class="q-tit">Resultado de hoje</p><div class="res"><b>${reg.total}</b><span class="sub">de 40 · sintomas ${faixa(reg.total)}</span></div>
+      <p class="q-desc">Obsessões: ${reg.obs} de 20 · Compulsões: ${reg.comp} de 20</p>`;
+    if (ps.length > 1) {
+      const dif = reg.total - ps[ps.length - 2].total, pct = base.total ? Math.round((base.total - reg.total) / base.total * 100) : 0;
+      msg += `<p class="q-desc" style="margin-top:8px">${dif < 0 ? `${-dif} ponto${dif < -1 ? "s" : ""} a menos que na última avaliação.` : dif > 0 ? `${dif} ponto${dif > 1 ? "s" : ""} a mais que na última avaliação. Vale conversar sobre isso na próxima consulta.` : "Igual à última avaliação."}${pct > 0 ? ` Desde a primeira, os sintomas caíram ${pct}%.` : ""}</p>`;
+    }
+    msg += `<p class="nota" style="margin-top:8px">Este número ajuda a acompanhar a evolução; quem interpreta é o Dr. Luis Felipe, junto com tudo o que você conta.</p></div>`;
+  }
+  $("tela").innerHTML = `<section class="fim"><h1>Recebido, obrigado!</h1><p class="sub" style="max-width:40ch">Suas respostas chegaram ao Dr. Luis Felipe. A próxima avaliação é daqui a ${DIAS_AVAL} dias.</p></section>${msg}
+    ${reg.morte === 1 ? `<div class="alerta">${CVV}</div>` : ""}
+    <button class="btn sec larga" style="margin-top:18px" id="voltar">Voltar ao início</button>`;
+  $("voltar").onclick = inicio; window.scrollTo(0, 0);
+}
+
+// ====== EVENTOS ======
+document.addEventListener("input", (ev) => { if (ev.target.dataset.cpf) ev.target.value = mascaraCpf(ev.target.value); });
+document.addEventListener("click", (ev) => {
+  const l = ev.target.closest("[data-l]");
+  if (l && R && R.lista) { const k = l.dataset.l; R.lista = R.lista.includes(k) ? R.lista.filter((x) => x !== k) : [...R.lista, k]; l.setAttribute("aria-pressed", R.lista.includes(k)); return; }
+  const b = ev.target.closest("[data-k]"); if (!b || !R) return;
+  const k = b.dataset.k, v = +b.dataset.v;
+  if (k[0] === "i") R.itens[+k.slice(1)] = v; else R[k] = v;
+  b.parentElement.querySelectorAll(".op").forEach((x) => x.setAttribute("aria-pressed", x === b));
+  b.closest(".cartao")?.classList.remove("erro");
+  if (k === "morte") $("almorte").hidden = v !== 1;
+});
+inicio();
+</script>
+</body>
+</html>
