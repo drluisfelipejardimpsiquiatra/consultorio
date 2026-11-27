@@ -212,7 +212,7 @@ const STEPS_ADULTO = [
  { n: "Sua história", q: [
    A(1996698874, { q: "Já fez tratamento com psiquiatra, psicólogo ou outro profissional de saúde mental?", l: ["Qual profissional, por qual motivo e em que ano", "Diagnósticos que recebeu"], sug: ["Nunca fiz"] }),
    A(1210749787, { q: "Remédios psiquiátricos que já usou e não usa mais", l: ["Nome do remédio", "Para que usou", "Se ajudou ou não, e se teve efeito colateral"], sug: ["Nunca usei"] }),
-   A(239768435, { sug: ["Não"] }),
+   A(239768435, { sug: ["Não", "Prefiro falar na consulta"], r: true }),
    A(1536613843, { h: "Infância" }),
    A(1803911536, { h: "Família", q: "Alguém da família de sangue já teve algum destes problemas?" }),
    A(1622432190, { q: "Se marcou algum: quem foi (parentesco) e qual o problema?" }),
@@ -297,6 +297,9 @@ pia: {
     dicas:["Nome, dose e há quanto tempo usa","Para que usa","Vitaminas e suplementos também","Alergias (se não tiver, diga \"não tem\")"]},
    {id:"tratamentos", tipo:"voz", junto:true, alerta:true, titulo:"Avaliações e tratamentos anteriores", pergunta:"Já fez alguma avaliação ou tratamento?",
     dicas:["Fono, terapia ocupacional, psicólogo, psicopedagogo, neuropediatra ou psiquiatra: quando e por quê","Diagnósticos já dados (TDAH, autismo, dislexia, ansiedade, outros)","Remédios que já usou e se ajudaram","Se já precisou de internação ou pronto-socorro por motivo emocional"]},
+   {id:"diretas", tipo:"perguntas", junto:true, titulo:"Uma pergunta direta",
+    itens:[
+     {id:"tentativa", rotulo:"Já tentou tirar a própria vida ou se machucou de propósito", q:"Ele ou ela já tentou tirar a própria vida, ou já se machucou de propósito (por exemplo, se cortando)?", opcoes:["Não","Sim","Não sei","Prefiro falar na consulta"], obrig:true, risco:"Sim", detalhe:{se:"Sim", label:"Quando foi a última vez? (mês e ano, se lembrar)"}}]},
    {id:"clinico", tipo:"voz", extra:"pesoAltura", titulo:"Saúde do corpo", pergunta:"Como é a saúde física?",
     dicas:["Doenças, alergias respiratórias, problemas de tireoide ou outros","Cirurgias e internações","Convulsões ou batida forte na cabeça","Audição e visão (já testou? usa óculos?)"]},
    {id:"familia", tipo:"voz", titulo:"Família", pergunta:"Conte sobre a família.",
@@ -353,7 +356,11 @@ geri: {
    {id:"clinico", tipo:"voz", extra:"pesoAltura", titulo:"Saúde do corpo", pergunta:"Como está a saúde física?",
     dicas:["Pressão alta, diabetes, coração, AVC, tireoide, Parkinson, outras","Cirurgias e internações","Quedas no último ano","Audição e visão: usa aparelho ou óculos?","Exames recentes: sangue, tomografia ou ressonância"]},
    {id:"psiq", tipo:"voz", alerta:true, titulo:"Saúde mental antes", pergunta:"Já houve algum tratamento de saúde mental?",
-    dicas:["Depressão, ansiedade ou outros problemas no passado","Psiquiatra, psicólogo ou neurologista: quando e por quê","Remédios que já usou e se ajudaram","Internações ou tentativas de tirar a própria vida"]},
+    dicas:["Depressão, ansiedade ou outros problemas no passado","Psiquiatra, psicólogo ou neurologista: quando e por quê","Remédios que já usou e se ajudaram","Internações por motivo emocional"]},
+   {id:"diretas", tipo:"perguntas", junto:true, titulo:"Algumas perguntas diretas",
+    itens:[
+     {id:"tentativa", rotulo:"Já tentou tirar a própria vida", q:"Já tentou tirar a própria vida, em qualquer época?", opcoes:["Não","Sim","Não sei","Prefiro falar na consulta"], obrig:true, risco:"Sim", detalhe:{se:"Sim", label:"Quando foi a última vez? (mês e ano, se lembrar)"}},
+     {id:"hipomania", rotulo:"Período de aceleração na vida", q:"Em alguma época da vida, houve um período de pelo menos alguns dias de euforia ou irritação fora do normal, com muito menos sono, falando mais ou fazendo coisas fora do comum?", opcoes:["Não","Sim","Não sei"], obrig:true, detalhe:{se:"Sim", label:"Quando foi e quantos dias durou?"}}]},
    {id:"familia", tipo:"voz", junto:true, titulo:"Saúde na família", pergunta:"Alguém da família de sangue teve problemas parecidos?",
     dicas:["Demência ou Alzheimer, Parkinson, AVC","Depressão, bipolaridade, álcool, suicídio","Quem foi e com que idade começou"]},
    {id:"vida", tipo:"voz", titulo:"História de vida", pergunta:"Conte um pouco da história de vida.",
@@ -390,6 +397,12 @@ function montarSteps(k) {
       { e: id("areas"), t: "check", q: "Em quais áreas isso tem atrapalhado? (marque todas que se aplicam)", o: r.areas },
       { e: id("nota"), t: "scale", q: "De 0 a 10, quanto isso tem atrapalhado hoje?", o: ["0","1","2","3","4","5","6","7","8","9","10"], leg: ["não atrapalha", "completamente"] }]);
     else if (t.tipo === "rastreio") add(t, r.rastreioTitulo, r.rastreio.map((txt, i) => ({ e: id("r" + i), t: "radio", q: txt, o: OPC, risco: i === r.risco })), { sub: esc(r.rastreioIntro), grade: true });
+    else if (t.tipo === "perguntas") { const q = [];
+      t.itens.forEach((p) => {
+        q.push({ e: id(p.id), t: "radio", q: p.q, r: !!p.obrig, o: p.opcoes, risco: !!p.risco, semVoz: true });
+        if (p.detalhe) q.push({ e: id(p.id + ".det"), t: "text", q: p.detalhe.label, o: [], se: [id(p.id), p.detalhe.se], semVoz: true });
+      });
+      add(t, t.titulo, q); }
     else if (t.tipo === "escalaFinal") add(t, "Para fechar", [
       { e: id("imp"), t: "scale", q: "De 0 a 10, quão importante é resolver isso agora?", o: ["0","1","2","3","4","5","6","7","8","9","10"], leg: ["nada importante", "extremamente"] },
       { e: id("conf"), t: "scale", q: "E de 0 a 10, quão confiante você está de que é possível mudar com ajuda?", o: ["0","1","2","3","4","5","6","7","8","9","10"], leg: ["nada confiante", "totalmente"] }]);
@@ -683,10 +696,13 @@ function textoExtra() {
     if (t.tipo === "voz") { let tx = String(g(t.id) || "").trim(); if (t.extra === "pesoAltura" && g("pesoAltura")) tx += (tx ? "\n" : "") + "Peso e altura: " + g("pesoAltura"); blocos.push([t.titulo, tx]); }
     if (t.tipo === "impacto") blocos.push([t.titulo, `Áreas: ${(g("areas") || []).join(", ") || "—"}\nQuanto atrapalha (0–10): ${g("nota") || "—"}`]);
     if (t.tipo === "rastreio") blocos.push([r.rastreioTitulo, r.rastreio.map((q, i) => `${q}: ${curto(g("r" + i))}`).join("\n")]);
+    if (t.tipo === "perguntas") blocos.push([t.titulo, t.itens.map((p) => { const v = g(p.id), d = String(g(p.id + ".det") || "").trim();
+      return `${p.rotulo}: ${v || "—"}${d && p.detalhe && v === p.detalhe.se ? " · " + d : ""}`; }).join("\n")]);
     if (t.tipo === "escalaFinal") blocos.push(["Motivação", `Importância de resolver agora (0–10): ${g("imp") || "—"}\nConfiança de mudar com ajuda (0–10): ${g("conf") || "—"}`]);
   });
   const livre = r.telas.filter((t) => t.tipo === "voz").map((t) => g(t.id) || "").join(" ").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
-  const rv = g("r" + r.risco), risco = (rv && rv !== OPC[0]) || /(suicid|me matar|se matar|tirar (a )?(minha|propria|sua) vida|nao quero mais viver|quer morrer|quero morrer|acabar com tudo|me ferir|me cortar|se cortar|se machuca)/.test(livre);
+  const estrut = r.telas.some((t) => t.tipo === "perguntas" && t.itens.some((p) => p.risco && g(p.id) === p.risco));
+  const rv = g("r" + r.risco), risco = estrut || (rv && rv !== OPC[0]) || /(suicid|me matar|se matar|tirar (a )?(minha|propria|sua) vida|nao quero mais viver|quer morrer|quero morrer|acabar com tudo|me ferir|me cortar|se cortar|se machuca)/.test(livre);
   const cpf = String(g("cpf") || "").replace(/\D/g, "");
   const cab = `[${r.rotulo}] ${g("nome") || ""} · CPF ${cpf || "—"} · nasc. ${dataBR(g("nasc")) || "—"} · ${g("tel") || ""}${g("resp") ? " · resp.: " + g("resp") : ""}`;
   const corpo = (risco ? "⚠ ATENÇÃO: sinal de risco (autolesão/suicídio) nas respostas.\n\n" : "") +
